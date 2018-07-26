@@ -2,28 +2,14 @@
 
 
 [[projects]]
-  name = "github.com/dgrijalva/jwt-go"
-  packages = ["."]
-  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
-  version = "v3.2.0"
-
-[[projects]]
   name = "github.com/labstack/echo"
-  packages = [
-    ".",
-    "middleware"
-  ]
+  packages = ["."]
   revision = "6d227dfea4d2e52cb76856120b3c17f758139b4e"
   version = "3.3.5"
 
 [[projects]]
   name = "github.com/labstack/gommon"
-  packages = [
-    "bytes",
-    "color",
-    "log",
-    "random"
-  ]
+  packages = ["color","log"]
   revision = "d6898124de917583f5ff5592ef931d1dfe0ddc05"
   version = "0.2.6"
 
@@ -54,10 +40,7 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
-  packages = [
-    "acme",
-    "acme/autocert"
-  ]
+  packages = ["acme","acme/autocert"]
   revision = "c126467f60eb25f8f27e5a981f32a87e3965053f"
 
 [[projects]]
@@ -69,6 +52,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "f157f2f3748e00adef9f6bc27d2701bcaf37fe89e9d7506d70612584c1aef97d"
+  inputs-digest = "709d3b18b53723eb76b75f762857b2a6a57366522f8f171de622032d9de2e187"
   solver-name = "gps-cdcl"
   solver-version = 1
