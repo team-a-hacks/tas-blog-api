@@ -1,3 +1,4 @@
 /vendor
 tas-blog-api
 /swagger-ui/docs.go-e
+.envrc

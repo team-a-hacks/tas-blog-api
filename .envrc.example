@@ -1,0 +1,7 @@
+export HOST="http://localhost"
+export PORT=1323
+
+# DB関連
+export DATABASE_URL=postgres://takumi@localhost:5432/tas-blog-api
+export SSL_MODE="?sslmode=disable"
+export DB_LOGMODE=false

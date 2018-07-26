@@ -1,5 +1,4 @@
 REPO=github.com/team-a-hacks/tas-blog-api
-
 ## generate swagger
 gen-swagger:
 	# swaggerファイル生成

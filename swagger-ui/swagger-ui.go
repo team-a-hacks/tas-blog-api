@@ -23,7 +23,7 @@ func NewSwaggerUIController(e *echo.Echo) {
 	e.GET("/", echo.WrapHandler(http.HandlerFunc(handler.IndexHandler)))
 	e.Static("/swagger-ui", "./swagger-ui/")
 
-	for apiKey, _ := range apiDescriptionsJson {
+	for apiKey := range apiDescriptionsJson {
 		e.GET("/swagger-ui/"+apiKey, echo.WrapHandler(http.HandlerFunc(handler.APIDescriptionHandler)))
 	}
 }

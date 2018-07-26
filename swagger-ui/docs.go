@@ -13,8 +13,8 @@ var resourceListingJson = `{
         }
     ],
     "info": {
-        "title": "echo-swagger",
-        "description": "echo-swagger sample api"
+        "title": "tas-blog-api",
+        "description": "tas-blog-api"
     }
 }`
 var apiDescriptionsJson = map[string]string{"hello":`{
