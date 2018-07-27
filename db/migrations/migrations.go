@@ -2,6 +2,7 @@ package migrations
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/team-a-hacks/tas-blog-api/article"
 	"github.com/team-a-hacks/tas-blog-api/db"
 )
 
@@ -15,11 +16,14 @@ func Excute() {
 // Migrate マイグレーション
 func Migrate(odb *gorm.DB) {
 	odb.AutoMigrate(
-	// ここにテーブルを追加する
+		// ここにテーブルを追加する
+		article.Article{},
 	)
 }
 
 // DropTable テーブル削除
 func DropTable(odb *gorm.DB) {
-	odb.DropTableIfExists()
+	odb.DropTableIfExists(
+		article.Article{},
+	)
 }
