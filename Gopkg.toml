@@ -32,7 +32,3 @@
 [[constraint]]
   name = "github.com/labstack/echo"
   version = "3.3.5"
-
-[prune]
-  go-tests = true
-  unused-packages = true
