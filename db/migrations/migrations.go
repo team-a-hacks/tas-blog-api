@@ -2,6 +2,7 @@ package migrations
 
 import (
 	"github.com/jinzhu/gorm"
+	"github.com/team-a-hacks/tas-blog-api/account"
 	"github.com/team-a-hacks/tas-blog-api/article"
 	"github.com/team-a-hacks/tas-blog-api/db"
 )
@@ -18,6 +19,9 @@ func Migrate(odb *gorm.DB) {
 	odb.AutoMigrate(
 		// ここにテーブルを追加する
 		article.Article{},
+		account.Account{},
+		// refreshtoken.RefreshToken{},
+		// reset.Reset{},
 	)
 }
 
@@ -25,5 +29,8 @@ func Migrate(odb *gorm.DB) {
 func DropTable(odb *gorm.DB) {
 	odb.DropTableIfExists(
 		article.Article{},
+		account.Account{},
+		// refreshtoken.RefreshToken{},
+		// reset.Reset{},
 	)
 }
