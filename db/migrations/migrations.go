@@ -5,6 +5,8 @@ import (
 	"github.com/team-a-hacks/tas-blog-api/account"
 	"github.com/team-a-hacks/tas-blog-api/article"
 	"github.com/team-a-hacks/tas-blog-api/db"
+	"github.com/team-a-hacks/tas-blog-api/refreshtoken"
+	"github.com/team-a-hacks/tas-blog-api/reset"
 )
 
 // Excute マイグレーション実行
@@ -20,8 +22,8 @@ func Migrate(odb *gorm.DB) {
 		// ここにテーブルを追加する
 		article.Article{},
 		account.Account{},
-		// refreshtoken.RefreshToken{},
-		// reset.Reset{},
+		refreshtoken.RefreshToken{},
+		reset.Reset{},
 	)
 }
 
@@ -30,7 +32,7 @@ func DropTable(odb *gorm.DB) {
 	odb.DropTableIfExists(
 		article.Article{},
 		account.Account{},
-		// refreshtoken.RefreshToken{},
-		// reset.Reset{},
+		refreshtoken.RefreshToken{},
+		reset.Reset{},
 	)
 }
