@@ -67,9 +67,54 @@ var apiDescriptionsJson = map[string]string{"auth":`{
                     ]
                 }
             ]
+        },
+        {
+            "path": "/auth/refresh",
+            "description": "リフレッシュトークンの再発行",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "レフレッシュAPI",
+                    "type": "github.com.team-a-hacks.tas-blog-api.auth.Token",
+                    "items": {},
+                    "summary": "リフレッシュトークンの再発行",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "token",
+                            "description": "リフレッシュトークン",
+                            "dataType": "github.com.team-a-hacks.tas-blog-api.auth.Refresh",
+                            "type": "github.com.team-a-hacks.tas-blog-api.auth.Refresh",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "トークン",
+                            "responseType": "object",
+                            "responseModel": "github.com.team-a-hacks.tas-blog-api.auth.Token"
+                        },
+                        {
+                            "code": 400,
+                            "message": "bad request",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "models": {
+        "github.com.satori.go.uuid.UUID": {
+            "id": "github.com.satori.go.uuid.UUID",
+            "properties": null
+        },
         "github.com.team-a-hacks.tas-blog-api.auth.Login": {
             "id": "github.com.team-a-hacks.tas-blog-api.auth.Login",
             "properties": {
@@ -80,6 +125,23 @@ var apiDescriptionsJson = map[string]string{"auth":`{
                     "format": ""
                 },
                 "password": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.team-a-hacks.tas-blog-api.auth.Refresh": {
+            "id": "github.com.team-a-hacks.tas-blog-api.auth.Refresh",
+            "properties": {
+                "accountID": {
+                    "type": "github.com.satori.go.uuid.UUID",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "refreshToken": {
                     "type": "string",
                     "description": "",
                     "items": {},

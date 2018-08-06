@@ -36,6 +36,7 @@ func NewAuthUsecase(
 // AuthUsecase auth usecase interface
 type AuthUsecase interface {
 	Login(l *auth.Login) (*auth.Token, error)
+	Refresh(t *auth.Refresh) (*auth.Token, error)
 }
 
 func (a *authUsecase) Login(l *auth.Login) (*auth.Token, error) {
@@ -82,5 +83,51 @@ func (a *authUsecase) Login(l *auth.Login) (*auth.Token, error) {
 		RefreshToken: refreshToken,
 	}
 
+	return &res, nil
+}
+
+func (a *authUsecase) Refresh(t *auth.Refresh) (*auth.Token, error) {
+	r, err := a.rTokenRepo.Get(t.RefreshToken)
+	if err != nil {
+		return nil, err
+	}
+
+	err = a.rTokenRepo.Delete(r.RefreshToken)
+	if err != nil {
+		return nil, err
+	}
+
+	// 有効期限のチェック 有効期限 < 現在の時間
+	now := time.Now()
+	if !now.Before(r.Expired) {
+		return nil, status.ErrUnauthorized
+	}
+	if t.AccountID != r.AccountID {
+		return nil, status.ErrUnauthorized
+	}
+
+	refreshToken := a.token.RandToken()
+	accessToken, err := a.token.GenerateJWT(r.AccountID, false)
+	if err != nil {
+		return nil, err
+	}
+
+	// 数値化
+	atoi, _ := strconv.Atoi(os.Getenv("REFRESH_TOKEN_EXPIRES_MIN"))
+	insert := &refreshtoken.RefreshToken{
+		ID:           uuid.NewV4(),
+		AccountID:    r.AccountID,
+		RefreshToken: refreshToken,
+		Expired:      time.Now().Add(time.Minute * time.Duration(atoi)),
+	}
+	err = a.rTokenRepo.Create(insert)
+	if err != nil {
+		return nil, err
+	}
+
+	res := auth.Token{
+		AccessToken:  accessToken,
+		RefreshToken: refreshToken,
+	}
 	return &res, nil
 }
