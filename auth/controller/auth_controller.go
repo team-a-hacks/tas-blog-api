@@ -21,6 +21,7 @@ func NewAuthController(e *echo.Echo, us usecase.AuthUsecase) {
 	}
 
 	e.POST("/auth/login", handler.Login)
+	e.POST("/auth/refresh", handler.Refresh)
 }
 
 // Login login
@@ -40,6 +41,28 @@ func (c *AuthController) Login(ctx echo.Context) error {
 	}
 
 	token, err := c.AuthUsecase.Login(&request)
+	if err != nil {
+		return status.ResponseError(ctx, err)
+	}
+	return ctx.JSON(http.StatusOK, token)
+}
+
+// Refresh refresh
+// @title レフレッシュAPI
+// @Description リフレッシュトークンの再発行
+// @Assept json
+// @Param token body auth.Refresh true "リフレッシュトークン"
+// @Success 200 {object} auth.Token "トークン"
+// @Failure 400 {object} error "bad request"
+// @Resource /auth
+// @Router /auth/refresh [post]
+func (c *AuthController) Refresh(ctx echo.Context) error {
+	request := auth.Refresh{}
+	err := ctx.Bind(&request)
+	if err != nil {
+		return ctx.JSON(http.StatusUnprocessableEntity, err.Error())
+	}
+	token, err := c.AuthUsecase.Refresh(&request)
 	if err != nil {
 		return status.ResponseError(ctx, err)
 	}
