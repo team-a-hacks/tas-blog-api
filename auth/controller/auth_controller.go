@@ -41,6 +41,12 @@ func (c *AuthController) Login(ctx echo.Context) error {
 		return ctx.JSON(http.StatusUnprocessableEntity, err.Error())
 	}
 
+	// validation
+	err = auth.LoginValidate(&request)
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, err.Error())
+	}
+
 	token, err := c.AuthUsecase.Login(&request)
 	if err != nil {
 		return status.ResponseError(ctx, err)
@@ -82,6 +88,12 @@ func (c *AuthController) Refresh(ctx echo.Context) error {
 func (c *AuthController) Logout(ctx echo.Context) error {
 	request := auth.Logout{}
 	err := ctx.Bind(&request)
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	// validation
+	err = auth.LogoutValidate(&request)
 	if err != nil {
 		return ctx.JSON(http.StatusBadRequest, err.Error())
 	}
