@@ -37,6 +37,7 @@ func NewAuthUsecase(
 type AuthUsecase interface {
 	Login(l *auth.Login) (*auth.Token, error)
 	Refresh(t *auth.Refresh) (*auth.Token, error)
+	Logout(id uuid.UUID) error
 }
 
 func (a *authUsecase) Login(l *auth.Login) (*auth.Token, error) {
@@ -130,4 +131,18 @@ func (a *authUsecase) Refresh(t *auth.Refresh) (*auth.Token, error) {
 		RefreshToken: refreshToken,
 	}
 	return &res, nil
+}
+
+func (a *authUsecase) Logout(id uuid.UUID) error {
+	refresh, err := a.rTokenRepo.GetByAccountID(id)
+	if err != nil {
+		return err
+	}
+
+	err = a.rTokenRepo.Delete(refresh.RefreshToken)
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

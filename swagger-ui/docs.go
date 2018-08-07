@@ -108,6 +108,47 @@ var apiDescriptionsJson = map[string]string{"auth":`{
                     ]
                 }
             ]
+        },
+        {
+            "path": "/auth/logout",
+            "description": "店舗従業員ログアウト",
+            "operations": [
+                {
+                    "httpMethod": "POST",
+                    "nickname": "ログアウトAPI",
+                    "type": "",
+                    "items": {},
+                    "summary": "店舗従業員ログアウト",
+                    "parameters": [
+                        {
+                            "paramType": "body",
+                            "name": "logout",
+                            "description": "アカウントID",
+                            "dataType": "github.com.team-a-hacks.tas-blog-api.auth.Logout",
+                            "type": "github.com.team-a-hacks.tas-blog-api.auth.Logout",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 204,
+                            "message": "no content",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        },
+                        {
+                            "code": 400,
+                            "message": "bad request",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
         }
     ],
     "models": {
@@ -126,6 +167,17 @@ var apiDescriptionsJson = map[string]string{"auth":`{
                 },
                 "password": {
                     "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        },
+        "github.com.team-a-hacks.tas-blog-api.auth.Logout": {
+            "id": "github.com.team-a-hacks.tas-blog-api.auth.Logout",
+            "properties": {
+                "id": {
+                    "type": "github.com.satori.go.uuid.UUID",
                     "description": "",
                     "items": {},
                     "format": ""

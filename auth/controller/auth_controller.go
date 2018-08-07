@@ -22,6 +22,7 @@ func NewAuthController(e *echo.Echo, us usecase.AuthUsecase) {
 
 	e.POST("/auth/login", handler.Login)
 	e.POST("/auth/refresh", handler.Refresh)
+	e.POST("/auth/logout", handler.Logout)
 }
 
 // Login login
@@ -67,4 +68,28 @@ func (c *AuthController) Refresh(ctx echo.Context) error {
 		return status.ResponseError(ctx, err)
 	}
 	return ctx.JSON(http.StatusOK, token)
+}
+
+// Logout logout
+// @title ログアウトAPI
+// @Description 店舗従業員ログアウト
+// @Assept json
+// @Param logout body auth.Logout true "アカウントID"
+// @Success 204 {object} error "no content"
+// @Failure 400 {object} error "bad request"
+// @Resource /auth
+// @Router /auth/logout [post]
+func (c *AuthController) Logout(ctx echo.Context) error {
+	request := auth.Logout{}
+	err := ctx.Bind(&request)
+	if err != nil {
+		return ctx.JSON(http.StatusBadRequest, err.Error())
+	}
+
+	err = c.AuthUsecase.Logout(request.ID)
+	if err != nil {
+		return status.ResponseError(ctx, err)
+	}
+
+	return ctx.NoContent(http.StatusNoContent)
 }
