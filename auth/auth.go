@@ -19,3 +19,8 @@ type Refresh struct {
 	AccountID    uuid.UUID `json:"accountID"`
 	RefreshToken string    `json:"refreshToken"`
 }
+
+// Logout logout struct
+type Logout struct {
+	ID uuid.UUID `json:"id"`
+}
