@@ -17,3 +17,10 @@ type Article struct {
 	UpdatedAt time.Time  `json:"updatedAt" name:"更新日"`
 	DeletedAt *time.Time `json:"deletedAt" name:"削除日"`
 }
+
+// ArticleData article_data struct
+type ArticleData struct {
+	ID        uuid.UUID `json:"id"`
+	Content   string    `json:"content"`
+	CreatedAt time.Time `json:"createdAt"`
+}
