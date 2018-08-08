@@ -18,3 +18,10 @@ type Account struct {
 	UpdatedAt time.Time  `json:"updatedAt" name:"更新日"`
 	DeletedAt *time.Time `json:"deletedAt" name:"削除日"`
 }
+
+// AccountData account data struct
+type AccountData struct {
+	ID    uuid.UUID `json:"id"`
+	Name  string    `json:"name"`
+	Email string    `json:"email"`
+}
