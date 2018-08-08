@@ -17,7 +17,6 @@ func NewHelloController(e *echo.Echo) {
 }
 
 // Hello hello world
-// Hello hello world
 // @Title Hello
 // @Description Hello 'your name'
 // @Assept json

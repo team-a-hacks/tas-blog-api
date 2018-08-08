@@ -2,6 +2,12 @@
 
 
 [[projects]]
+  name = "github.com/dgrijalva/jwt-go"
+  packages = ["."]
+  revision = "06ea1031745cb8b3dab3f6a236daf2b0aa468b7e"
+  version = "v3.2.0"
+
+[[projects]]
   name = "github.com/jinzhu/gorm"
   packages = [".","dialects/postgres"]
   revision = "6ed508ec6a4ecb3531899a69cbc746ccf65a4166"
@@ -15,13 +21,13 @@
 
 [[projects]]
   name = "github.com/labstack/echo"
-  packages = ["."]
+  packages = [".","middleware"]
   revision = "6d227dfea4d2e52cb76856120b3c17f758139b4e"
   version = "3.3.5"
 
 [[projects]]
   name = "github.com/labstack/gommon"
-  packages = ["color","log"]
+  packages = ["bytes","color","log","random"]
   revision = "d6898124de917583f5ff5592ef931d1dfe0ddc05"
   version = "0.2.6"
 
@@ -44,6 +50,12 @@
   version = "v0.0.3"
 
 [[projects]]
+  name = "github.com/pkg/errors"
+  packages = ["."]
+  revision = "645ef00459ed84a119197bfb8d8205042c6df63d"
+  version = "v0.8.0"
+
+[[projects]]
   name = "github.com/satori/go.uuid"
   packages = ["."]
   revision = "f58768cc1a7a7e77a3bd49e98cdd21419399b6a3"
@@ -64,7 +76,7 @@
 [[projects]]
   branch = "master"
   name = "golang.org/x/crypto"
-  packages = ["acme","acme/autocert"]
+  packages = ["acme","acme/autocert","bcrypt","blowfish"]
   revision = "c126467f60eb25f8f27e5a981f32a87e3965053f"
 
 [[projects]]
@@ -76,6 +88,6 @@
 [solve-meta]
   analyzer-name = "dep"
   analyzer-version = 1
-  inputs-digest = "73ae2c29981e785a1085f3c964f790b71a15186a5a10194d1197d0f6d5a6cb4f"
+  inputs-digest = "b8cfdd17b384788418f867e9e1d93f716a04d8499616769a0220367fa1a9fff5"
   solver-name = "gps-cdcl"
   solver-version = 1

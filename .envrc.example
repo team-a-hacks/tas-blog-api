@@ -1,5 +1,10 @@
 export HOST="http://localhost"
 export PORT=1323
+## refresh tokenの有効期限
+export REFRESH_TOKEN_EXPIRES_MIN="4320"
+## access tokenの有効期限 30分
+export ACCESS_TOKEN_EXPIRES_MIN="1800"
+## password setting tokenの有効期限(30日)
 
 # DB関連
 export DATABASE_URL=postgres://takumi@localhost:5432/tas-blog-api
