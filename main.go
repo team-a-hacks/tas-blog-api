@@ -4,13 +4,16 @@
 // @BasePath http://localhost:1323/swagger-ui
 // @SubApi hello [/hello]
 // @SubApi auth [/auth]
+// @SubApi accounts [/accounts]
 package main
 
 import (
 	"os"
 
 	"github.com/labstack/echo"
+	accountC "github.com/team-a-hacks/tas-blog-api/account/controller"
 	accountR "github.com/team-a-hacks/tas-blog-api/account/repository"
+	accountU "github.com/team-a-hacks/tas-blog-api/account/usecase"
 	authC "github.com/team-a-hacks/tas-blog-api/auth/controller"
 	authU "github.com/team-a-hacks/tas-blog-api/auth/usecase"
 	helloC "github.com/team-a-hacks/tas-blog-api/hello/controller"
@@ -27,9 +30,11 @@ func main() {
 	rTokenRepo := rTokenR.NewRefreshTokenRepository(database)
 
 	authUsecase := authU.NewAuthUsecase(accountRepo, rTokenRepo, token)
+	accountUcase := accountU.NewAccountUsecase(accountRepo)
 
 	helloC.NewHelloController(e)
 	authC.NewAuthController(e, authUsecase)
+	accountC.NewAccountController(e, accountUcase)
 
 	swaggerui.NewSwaggerUIController(e)
 
