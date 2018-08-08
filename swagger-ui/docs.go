@@ -5,7 +5,7 @@ package swaggerui
 var resourceListingJson = `{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "http://localhost:1323/swagger-ui",
+    "basePath": "https://tas-blog-api.herokuapp.com/swagger-ui",
     "apis": [
         {
             "path": "/hello",
@@ -28,7 +28,7 @@ var resourceListingJson = `{
 var apiDescriptionsJson = map[string]string{"accounts":`{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "http://localhost:1323",
+    "basePath": "https://tas-blog-api.herokuapp.com",
     "resourcePath": "/accounts",
     "apis": [
         {
@@ -110,7 +110,7 @@ var apiDescriptionsJson = map[string]string{"accounts":`{
 }`,"auth":`{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "http://localhost:1323",
+    "basePath": "https://tas-blog-api.herokuapp.com",
     "resourcePath": "/auth",
     "apis": [
         {
@@ -308,7 +308,7 @@ var apiDescriptionsJson = map[string]string{"accounts":`{
 }`,"hello":`{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "http://localhost:1323",
+    "basePath": "https://tas-blog-api.herokuapp.com",
     "resourcePath": "/hello",
     "apis": [
         {
