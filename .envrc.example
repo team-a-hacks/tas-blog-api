@@ -1,5 +1,6 @@
 export HOST="http://localhost"
 export PORT=1323
+export ORIGIN=*
 ## refresh tokenの有効期限
 export REFRESH_TOKEN_EXPIRES_MIN="4320"
 ## access tokenの有効期限 30分
