@@ -5,7 +5,7 @@ package swaggerui
 var resourceListingJson = `{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "https://tas-blog-api.herokuapp.com/swagger-ui",
+    "basePath": "http://localhost:1323/swagger-ui",
     "apis": [
         {
             "path": "/hello",
@@ -18,6 +18,10 @@ var resourceListingJson = `{
         {
             "path": "/accounts",
             "description": "accounts"
+        },
+        {
+            "path": "/articles",
+            "description": "articles"
         }
     ],
     "info": {
@@ -25,92 +29,10 @@ var resourceListingJson = `{
         "description": "tas-blog-api"
     }
 }`
-var apiDescriptionsJson = map[string]string{"accounts":`{
+var apiDescriptionsJson = map[string]string{"auth":`{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "https://tas-blog-api.herokuapp.com",
-    "resourcePath": "/accounts",
-    "apis": [
-        {
-            "path": "/accounts/{id}",
-            "description": "",
-            "operations": [
-                {
-                    "httpMethod": "GET",
-                    "nickname": "アカウント取得API",
-                    "type": "github.com.team-a-hacks.tas-blog-api.account.AccountData",
-                    "items": {},
-                    "parameters": [
-                        {
-                            "paramType": "path",
-                            "name": "id",
-                            "description": "ID",
-                            "dataType": "github.com.satori.go.uuid.UUID",
-                            "type": "github.com.satori.go.uuid.UUID",
-                            "format": "",
-                            "allowMultiple": false,
-                            "required": true,
-                            "minimum": 0,
-                            "maximum": 0
-                        }
-                    ],
-                    "responseMessages": [
-                        {
-                            "code": 200,
-                            "message": "アカウント情報",
-                            "responseType": "object",
-                            "responseModel": "github.com.team-a-hacks.tas-blog-api.account.AccountData"
-                        },
-                        {
-                            "code": 404,
-                            "message": "not found error",
-                            "responseType": "object",
-                            "responseModel": "error"
-                        },
-                        {
-                            "code": 500,
-                            "message": "internal server error",
-                            "responseType": "object",
-                            "responseModel": "error"
-                        }
-                    ]
-                }
-            ]
-        }
-    ],
-    "models": {
-        "github.com.satori.go.uuid.UUID": {
-            "id": "github.com.satori.go.uuid.UUID",
-            "properties": null
-        },
-        "github.com.team-a-hacks.tas-blog-api.account.AccountData": {
-            "id": "github.com.team-a-hacks.tas-blog-api.account.AccountData",
-            "properties": {
-                "email": {
-                    "type": "string",
-                    "description": "",
-                    "items": {},
-                    "format": ""
-                },
-                "id": {
-                    "type": "github.com.satori.go.uuid.UUID",
-                    "description": "",
-                    "items": {},
-                    "format": ""
-                },
-                "name": {
-                    "type": "string",
-                    "description": "",
-                    "items": {},
-                    "format": ""
-                }
-            }
-        }
-    }
-}`,"auth":`{
-    "apiVersion": "1.0.0",
-    "swaggerVersion": "1.2",
-    "basePath": "https://tas-blog-api.herokuapp.com",
+    "basePath": "http://localhost:1323",
     "resourcePath": "/auth",
     "apis": [
         {
@@ -308,7 +230,7 @@ var apiDescriptionsJson = map[string]string{"accounts":`{
 }`,"hello":`{
     "apiVersion": "1.0.0",
     "swaggerVersion": "1.2",
-    "basePath": "https://tas-blog-api.herokuapp.com",
+    "basePath": "http://localhost:1323",
     "resourcePath": "/hello",
     "apis": [
         {
@@ -333,4 +255,157 @@ var apiDescriptionsJson = map[string]string{"accounts":`{
             ]
         }
     ]
+}`,"accounts":`{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "http://localhost:1323",
+    "resourcePath": "/accounts",
+    "apis": [
+        {
+            "path": "/accounts/{id}",
+            "description": "",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "アカウント取得API",
+                    "type": "github.com.team-a-hacks.tas-blog-api.account.AccountData",
+                    "items": {},
+                    "parameters": [
+                        {
+                            "paramType": "path",
+                            "name": "id",
+                            "description": "ID",
+                            "dataType": "github.com.satori.go.uuid.UUID",
+                            "type": "github.com.satori.go.uuid.UUID",
+                            "format": "",
+                            "allowMultiple": false,
+                            "required": true,
+                            "minimum": 0,
+                            "maximum": 0
+                        }
+                    ],
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "アカウント情報",
+                            "responseType": "object",
+                            "responseModel": "github.com.team-a-hacks.tas-blog-api.account.AccountData"
+                        },
+                        {
+                            "code": 404,
+                            "message": "not found error",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        },
+                        {
+                            "code": 500,
+                            "message": "internal server error",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "github.com.satori.go.uuid.UUID": {
+            "id": "github.com.satori.go.uuid.UUID",
+            "properties": null
+        },
+        "github.com.team-a-hacks.tas-blog-api.account.AccountData": {
+            "id": "github.com.team-a-hacks.tas-blog-api.account.AccountData",
+            "properties": {
+                "email": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "github.com.satori.go.uuid.UUID",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "name": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        }
+    }
+}`,"articles":`{
+    "apiVersion": "1.0.0",
+    "swaggerVersion": "1.2",
+    "basePath": "http://localhost:1323",
+    "resourcePath": "/articles",
+    "apis": [
+        {
+            "path": "/articles",
+            "description": "記事一覧取得API",
+            "operations": [
+                {
+                    "httpMethod": "GET",
+                    "nickname": "記事一覧取得API",
+                    "type": "array",
+                    "items": {
+                        "$ref": "github.com.team-a-hacks.tas-blog-api.article.ArticleData"
+                    },
+                    "summary": "記事一覧取得API",
+                    "responseMessages": [
+                        {
+                            "code": 200,
+                            "message": "記事",
+                            "responseType": "array",
+                            "responseModel": "github.com.team-a-hacks.tas-blog-api.article.ArticleData"
+                        },
+                        {
+                            "code": 404,
+                            "message": "not found error",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        },
+                        {
+                            "code": 500,
+                            "message": "internal server error",
+                            "responseType": "object",
+                            "responseModel": "error"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "models": {
+        "github.com.satori.go.uuid.UUID": {
+            "id": "github.com.satori.go.uuid.UUID",
+            "properties": null
+        },
+        "github.com.team-a-hacks.tas-blog-api.article.ArticleData": {
+            "id": "github.com.team-a-hacks.tas-blog-api.article.ArticleData",
+            "properties": {
+                "content": {
+                    "type": "string",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "createdAt": {
+                    "type": "Time",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                },
+                "id": {
+                    "type": "github.com.satori.go.uuid.UUID",
+                    "description": "",
+                    "items": {},
+                    "format": ""
+                }
+            }
+        }
+    }
 }`,}
